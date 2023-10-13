@@ -1,4 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as material;
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@include material.core();
+
+$mdr-primary-palette: (
+  50: #ddeef0,
+  100: #abd6d8,
+  200: #74bdbe,
+  300: #38a3a4,
+  400: #009190,
+  500: #007e7c,
+  600: #00726f,
+  700: #006460,
+  800: #005450,
+  900: #003934,
+  contrast: (
+    50: rgba(0, 0, 0, 0.87),
+    100: rgba(0, 0, 0, 0.87),
+    200: rgba(0, 0, 0, 0.87),
+    300: rgba(0, 0, 0, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+$primary-palette: material.define-palette($mdr-primary-palette, $default: 200);
+$accent-palette: material.define-palette(material.$orange-palette);
+
+$mdr-light-theme: material.define-light-theme(
+  (
+    color: (
+      primary: $primary-palette,
+      accent: $accent-palette,
+    ),
+  )
+);
+
+@include material.all-component-themes($mdr-light-theme);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
