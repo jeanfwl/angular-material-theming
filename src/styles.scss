@@ -1,4 +1,5 @@
 @use "@angular/material" as material;
+@use "sass:map";
 
 @include material.core();
 
@@ -39,6 +40,23 @@ $mdr-light-theme: material.define-light-theme(
   )
 );
 
+// Extra colors
+$success-palette: material.define-palette(material.$green-palette);
+$info-palette: material.define-palette(material.$light-blue-palette);
+
+$mdr-light-theme: map.deep-merge(
+  $mdr-light-theme,
+  (
+    color: (
+      success: $success-palette,
+      info: $info-palette,
+    ),
+    success: $success-palette,
+    info: $info-palette,
+  )
+);
+// @debug $mdr-light-theme;
+
 @include material.all-component-themes($mdr-light-theme);
 
 html,
@@ -48,4 +66,10 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
