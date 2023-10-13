@@ -1,4 +1,5 @@
 @use "@angular/material" as material;
+@use "./app/banner/banner.component-theme.scss" as banner;
 @use "sass:map";
 
 @include material.core();
@@ -58,6 +59,7 @@ $mdr-light-theme: map.deep-merge(
 // @debug $mdr-light-theme;
 
 @include material.all-component-themes($mdr-light-theme);
+@include banner.app-banner-theme($mdr-light-theme);
 
 html,
 body {
