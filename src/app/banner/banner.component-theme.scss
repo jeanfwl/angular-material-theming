@@ -3,10 +3,24 @@
 
 @mixin app-banner-theme($theme) {
   $theme-colors: material.get-color-config($theme);
-  $primary-palette: map.get($theme-colors, "info");
-  $primary-color: material.get-color-from-palette($primary-palette, 500);
+  $success-palette: map.get($theme-colors, "success");
+  $info-palette: map.get($theme-colors, "info");
+  $warn-palette: map.get($theme-colors, "warn");
+  $backgrounds: map.get($theme-colors, "background");
 
-  app-banner {
-    color: $primary-color;
+  .app-banner {
+    background-color: material.get-color-from-palette($backgrounds, "card");
+    &--success {
+      background-color: material.get-color-from-palette(
+        $success-palette,
+        lighter
+      );
+    }
+    &--info {
+      background-color: material.get-color-from-palette($info-palette, lighter);
+    }
+    &--warn {
+      background-color: material.get-color-from-palette($warn-palette, lighter);
+    }
   }
 }
