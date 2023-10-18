@@ -1,0 +1,49 @@
+@use "@angular/material" as material;
+@use "sass:map";
+
+$mdr-typography: material.define-typography-config("Times New Roman");
+
+$mdr-primary-palette: (
+  50: #ddeef0,
+  100: #abd6d8,
+  200: #74bdbe,
+  300: #38a3a4,
+  400: #009190,
+  500: #007e7c,
+  600: #00726f,
+  700: #006460,
+  800: #005450,
+  900: #003934,
+  contrast: (
+    50: rgba(0, 0, 0, 0.87),
+    100: rgba(0, 0, 0, 0.87),
+    200: rgba(0, 0, 0, 0.87),
+    300: rgba(0, 0, 0, 0.87),
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+$mdr-accent-palette: material.define-palette(material.$orange-palette);
+
+// Extra colors
+$success-palette: material.define-palette(material.$green-palette);
+$info-palette: material.define-palette(material.$light-blue-palette);
+
+@function apply-extra-colors($theme) {
+  @return map.deep-merge(
+    $theme,
+    (
+      color: (
+        success: $success-palette,
+        info: $info-palette,
+      ),
+      success: $success-palette,
+      info: $info-palette,
+    )
+  );
+}

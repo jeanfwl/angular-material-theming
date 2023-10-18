@@ -1,0 +1,20 @@
+@use "@angular/material" as material;
+@use "./common.scss" as common;
+
+$primary-palette: material.define-palette(
+  common.$mdr-primary-palette,
+  $default: 200
+);
+$accent-palette: material.define-palette(common.$mdr-accent-palette);
+
+$theme: material.define-dark-theme(
+  (
+    color: (
+      primary: $primary-palette,
+      accent: $accent-palette,
+    ),
+    typography: common.$mdr-typography,
+  )
+);
+
+$theme: common.apply-extra-colors($theme);
