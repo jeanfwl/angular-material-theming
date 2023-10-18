@@ -2,6 +2,8 @@
 @use "./app/banner/banner.component-theme.scss" as banner;
 @use "sass:map";
 
+$mdr-typography: material.define-typography-config("Times New Roman");
+
 @include material.core();
 
 $mdr-primary-palette: (
@@ -38,6 +40,7 @@ $mdr-light-theme: material.define-light-theme(
       primary: $primary-palette,
       accent: $accent-palette,
     ),
+    typography: $mdr-typography,
   )
 );
 
