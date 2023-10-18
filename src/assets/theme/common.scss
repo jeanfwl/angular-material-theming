@@ -1,7 +1,7 @@
 @use "@angular/material" as material;
 @use "sass:map";
 
-$mdr-typography: material.define-typography-config("Times New Roman");
+$mdr-typography: material.define-typography-config("Roboto, sans-serif");
 
 $mdr-primary-palette: (
   50: #ddeef0,
