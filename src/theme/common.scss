@@ -1,4 +1,5 @@
 @use "@angular/material" as material;
+@use "../app/banner/banner.component-theme.scss" as banner;
 @use "sass:map";
 
 $mdr-typography: material.define-typography-config("Roboto, sans-serif");
@@ -46,4 +47,17 @@ $info-palette: material.define-palette(material.$light-blue-palette);
       info: $info-palette,
     )
   );
+}
+
+@mixin create-theme($theme) {
+  @include material.all-component-themes($theme);
+  @include banner.app-banner-theme($theme);
+  $background-color: map.get(
+    material.get-color-config($theme),
+    "background",
+    "background"
+  );
+  body {
+    background-color: $background-color;
+  }
 }

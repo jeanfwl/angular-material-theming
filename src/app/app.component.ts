@@ -13,23 +13,26 @@ export class AppComponent implements OnInit {
     private renderer: Renderer2
   ) {}
 
+  readonly themeAnchor = this.document.getElementById('app-theme');
   ngOnInit(): void {
     let themeName: string;
     if ((themeName = sessionStorage.getItem('theme'))) {
-      this.renderer.addClass(this.document.body, `${themeName}-theme`);
+      this.renderer.setAttribute(
+        this.themeAnchor,
+        'href',
+        `/${themeName}-theme.css`
+      );
     } else {
-      this.renderer.addClass(this.document.body, 'light-theme');
+      this.renderer.setAttribute(this.themeAnchor, 'href', '/light-theme.css');
     }
   }
 
   setTheme({ source }: MatSelectChange) {
     sessionStorage.setItem('theme', source.value);
     if (source.value === 'dark') {
-      this.renderer.addClass(this.document.body, 'dark-theme');
-      this.renderer.removeClass(this.document.body, 'light-theme');
+      this.renderer.setAttribute(this.themeAnchor, 'href', '/dark-theme.css');
     } else {
-      this.renderer.addClass(this.document.body, 'light-theme');
-      this.renderer.removeClass(this.document.body, 'dark-theme');
+      this.renderer.setAttribute(this.themeAnchor, 'href', '/light-theme.css');
     }
   }
 }

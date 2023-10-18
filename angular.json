@@ -24,7 +24,19 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss",
+              {
+                "input": "src/theme/dark-theme.scss",
+                "bundleName": "dark-theme",
+                "inject": false
+              },
+              {
+                "input": "src/theme/light-theme.scss",
+                "bundleName": "light-theme",
+                "inject": false
+              }
+            ],
             "scripts": []
           },
           "configurations": {

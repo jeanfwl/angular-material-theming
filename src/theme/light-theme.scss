@@ -18,3 +18,5 @@ $theme: material.define-light-theme(
 );
 
 $theme: common.apply-extra-colors($theme);
+
+@include common.create-theme($theme);

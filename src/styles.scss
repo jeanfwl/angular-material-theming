@@ -1,24 +1,7 @@
 @use "@angular/material" as material;
-@use "sass:map";
-@use "./assets/theme/light-theme.scss" as light;
-@use "./assets/theme/dark-theme.scss" as dark;
-@use "./app/banner/banner.component-theme.scss" as banner;
+@use "./theme/common.scss" as common;
 
-@include material.core();
-
-@include material.all-component-themes(light.$theme);
-@include banner.app-banner-theme(light.$theme);
-
-@mixin create-theme($theme) {
-  @include material.all-component-colors($theme);
-  @include banner.app-banner-theme($theme);
-  $background-color: map.get(
-    material.get-color-config($theme),
-    "background",
-    "background"
-  );
-  background-color: $background-color;
-}
+@include material.core(common.$mdr-typography);
 
 html,
 body {
@@ -34,10 +17,3 @@ body {
 *::after {
   box-sizing: border-box;
 }
-
-.dark-theme {
-  @include create-theme(dark.$theme);
-}
-// .light-theme {
-//   @include create-theme(light.$theme);
-// }
