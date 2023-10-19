@@ -7,6 +7,20 @@ $primary-palette: material.define-palette(
 );
 $accent-palette: material.define-palette(common.$mdr-accent-palette);
 
+// Extra colors
+$success-palette: material.define-palette(material.$green-palette);
+$info-palette: material.define-palette(
+  material.$light-blue-palette,
+  500,
+  700,
+  900
+);
+
+$extra-colors: (
+  success: $success-palette,
+  info: $info-palette,
+);
+
 $theme: material.define-dark-theme(
   (
     color: (
@@ -17,6 +31,6 @@ $theme: material.define-dark-theme(
   )
 );
 
-$theme: common.apply-extra-colors($theme);
+$theme: common.apply-extra-colors($theme, $extra-colors);
 
 @include common.create-theme($theme);

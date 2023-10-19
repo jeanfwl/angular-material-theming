@@ -31,20 +31,11 @@ $mdr-primary-palette: (
 
 $mdr-accent-palette: material.define-palette(material.$orange-palette);
 
-// Extra colors
-$success-palette: material.define-palette(material.$green-palette);
-$info-palette: material.define-palette(material.$light-blue-palette);
-
-@function apply-extra-colors($theme) {
+@function apply-extra-colors($theme, $extra-colors) {
   @return map.deep-merge(
     $theme,
     (
-      color: (
-        success: $success-palette,
-        info: $info-palette,
-      ),
-      success: $success-palette,
-      info: $info-palette,
+      color: $extra-colors,
     )
   );
 }
@@ -52,12 +43,4 @@ $info-palette: material.define-palette(material.$light-blue-palette);
 @mixin create-theme($theme) {
   @include material.all-component-themes($theme);
   @include banner.app-banner-theme($theme);
-  $background-color: map.get(
-    material.get-color-config($theme),
-    "background",
-    "background"
-  );
-  body {
-    background-color: $background-color;
-  }
 }
